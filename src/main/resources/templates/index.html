@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+
+    <title>Oversigt over dyr i Zoo</title>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <h1>Oversigt over dyrene</h1>
+        </div>
+        <div class="row">
+            <table class="table table-dark">
+                <tr>
+                    <th>ID</th>
+                    <th>Navn</th>
+                    <th>Art</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+                <tr th:each="animal : ${anim}">
+                    <!-- Thymeleaf bruger automatisk getters -->
+                    <td th:text="${animal.id}">xxx</td>
+                    <td th:text="${animal.name}">Motorstruds</td>
+                    <td th:text="${animal.species}">Motoriseret fugl</td>
+                    <td><a th:href="@{'/update/' + ${animal.id}}" class="btn btn-primary">Opdater</a></td>
+                    <td><a th:href="@{'/delete/' + ${animal.id}}" class="btn btn-danger">Slet</a></td>
+                </tr>
+            </table>
+        </div>
+        <div class="row">
+            <a href="create" class="btn btn-secondary">Tilføj nyt dyr</a>
+        </div>
+    </div>
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+
+</body>
+</html>
